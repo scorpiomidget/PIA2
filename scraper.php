@@ -24,7 +24,16 @@ $dom->load($html);
 $items = $dom->find(".r a");
 
 foreach($items AS $i=>$item) {
-   echo $i.': '.$item->attr['href'].'<br />';
+  $resultUrl = $item->attr['href'];
+
+  // strip out unnecessary junk
+	$resultUrl = str_replace("/url?q=", "", $resultUrl);
+	$tmp = explode('&', $resultUrl);
+	$resultUrl = $tmp[0];
+		
+	if ($resultUrl[0] === "/") continue;
+	
+  echo $i.': '.$resultUrl."\n";
 }
 
 //
