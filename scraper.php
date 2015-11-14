@@ -21,7 +21,7 @@ $html = scraperwiki::scrape($url, $params, $userAgent);
 $dom = new simple_html_dom();
 $dom->load($html);
 //print_r($dom->find(".r a"));
-$items = $dom->find(".r a"));
+$items = $dom->find(".r a");
 
 foreach($items AS $i=>$item) {
    echo $i.': '.$item->attr['href'].'<br />';
